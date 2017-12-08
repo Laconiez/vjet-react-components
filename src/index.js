@@ -1,8 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+// Components
+import Button from './components/Button';
+import Dim from './components/Dim';
+import Sidebar from './components/Sidebar';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+// Styles
+import padding from './styles/padding';
+
+export { Button, Dim, Sidebar, padding };

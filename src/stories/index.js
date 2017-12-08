@@ -1,19 +1,52 @@
-import React from 'react';
+/* eslint-disable */
+import React, { Component } from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
-// import { Button, Welcome } from '@storybook/react/demo';
-
 import Button from '../components/Button';
+import Dim from '../components/Dim';
+import Sidebar from '../components/Sidebar';
 
-/* storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+class SidebarWrapper extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      opened: true,
+    };
+  }
 
-storiesOf('Button', module)
-  .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
-  .add('with some emoji', () => <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>); */
+  render() {
+    return (
+      <div>
+        <button
+          onClick={() => {
+            this.setState({ opened: true });
+          }}
+        >
+          Open sidebar
+        </button>
+        <Sidebar
+          isOpened={this.state.opened}
+          onClose={() => {
+            this.setState({ opened: false });
+          }}
+        />
+      </div>
+    );
+  }
+}
 
-storiesOf('Button', module).add('with text', () => (
-  <Button title={'with text'} />
-));
+storiesOf('Button', module).add('with text', () => <Button>test</Button>);
+
+storiesOf('Dim', module)
+  .add('simple fixed', () => <Dim />)
+  .add('simple containerized', () => (
+    <div style={{ position: 'absolute', width: '100px', height: '100px' }}>
+      <Dim local />
+    </div>
+  ))
+  .add('simple transparent', () => <Dim transparent>Dim</Dim>);
+
+storiesOf('Sidebar', module).add('simple opened', () => <SidebarWrapper />);
