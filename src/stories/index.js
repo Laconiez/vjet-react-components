@@ -8,6 +8,7 @@ import { linkTo } from '@storybook/addon-links';
 import Button from '../components/Button';
 import Dim from '../components/Dim';
 import Sidebar from '../components/Sidebar';
+import Calendar from '../components/Calendar';
 
 class SidebarWrapper extends Component {
   constructor(props) {
@@ -50,3 +51,5 @@ storiesOf('Dim', module)
   .add('simple transparent', () => <Dim transparent>Dim</Dim>);
 
 storiesOf('Sidebar', module).add('simple opened', () => <SidebarWrapper />);
+
+storiesOf('Calendar', module).add('default', () => <Calendar />);
