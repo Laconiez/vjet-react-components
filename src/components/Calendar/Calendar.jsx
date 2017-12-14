@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 // import styled from 'react-emotion';
 // import pt from 'prop-types';
 
@@ -15,19 +16,40 @@ class Calendar extends Component {
     super(props);
 
     this.state = {
-      selectedDate: new Date(),
-      selectedMonth: 10,
-      selectedYear: 2017,
+      selectedDate: moment(),
+      selectedMonth: moment().startOf('month'),
     };
+
+    this.weekdays = [];
+    const date = moment();
+    for (let i = 0; i < 7; i += 1) {
+      this.weekdays.push(date.weekday(i).format('ddd'));
+    }
   }
 
   render() {
-    const { selectedMonth, selectedYear, selectedDate } = this.state;
+    const { selectedMonth, selectedDate } = this.state;
+
+    const days = [];
+
+    for (let i = 0, to = selectedMonth.weekday(); i < to; i += 1) {
+      days.push(`-- ${moment(selectedMonth)
+        .subtract('days', (i - selectedMonth.weekday()) * -1)
+        .format('DD')}`);
+    }
+    const endOfMonth = moment(selectedMonth)
+      .endOf('month')
+      .date();
+    for (let i = 1; i <= endOfMonth; i += 1) {
+      days.push(i);
+    }
 
     return (
       <div>
-        calendar {selectedYear} {selectedMonth}
-        <div>{selectedDate.toString()}</div>
+        calendar {selectedMonth.format('YYYY')} {selectedMonth.format('MMMM')}
+        <div>{selectedDate.format('DD-MM-YYYY')}</div>
+        <div>{this.weekdays.map(wd => <div>{wd}</div>)}</div>
+        {days.map(day => <div>{day}</div>)}
       </div>
     );
   }
