@@ -9,6 +9,7 @@ import Button from '../components/Button';
 import Dim from '../components/Dim';
 import Sidebar from '../components/Sidebar';
 import Calendar from '../components/Calendar';
+import Input from '../components/Input';
 
 class SidebarWrapper extends Component {
   constructor(props) {
@@ -40,6 +41,8 @@ class SidebarWrapper extends Component {
 }
 
 storiesOf('Button', module).add('with text', () => <Button>test</Button>);
+
+storiesOf('Input', module).add('simple', () => <Input value="simple text" />);
 
 storiesOf('Dim', module)
   .add('simple fixed', () => <Dim />)
