@@ -42,7 +42,10 @@ class SidebarWrapper extends Component {
 
 storiesOf('Button', module).add('with text', () => <Button>test</Button>);
 
-storiesOf('Input', module).add('simple', () => <Input value="simple text" />);
+storiesOf('Input', module)
+  .add('simple', () => <Input value="simple text" />)
+  .add('with error', () => <Input value="text" isError errorMessage="error" />)
+  .add('disabled', () => <Input value="disabled text" disabled />);
 
 storiesOf('Dim', module)
   .add('simple fixed', () => <Dim />)
