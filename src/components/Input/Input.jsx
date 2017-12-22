@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'react-emotion';
 import pt from 'prop-types';
 
@@ -10,7 +10,34 @@ const InputStyle = styled('input')`
   border: solid 1px yellow;
 `;
 
-const Input = ({ value, onChange }) => <InputStyle value={value} onChange={onChange} />;
+class Input extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      pristine: true,
+      initValue: '',
+    };
+  }
+  componentWillReceiveProps() {
+    this.setState({ initValue: this.props.value });
+  }
+
+  onChange(e) {
+    const changedValue = e.target.value;
+    const { initValue, pristine } = this.state;
+
+    if ((changedValue !== initValue) !== pristine) {
+      this.setState({ pristine: changedValue !== initValue });
+    }
+  }
+
+  render() {
+    const { value, onChange } = this.props;
+
+    return <InputStyle value={value} onChange={onChange} />;
+  }
+}
 
 Input.propTypes = {
   value: pt.string.isRequired,
