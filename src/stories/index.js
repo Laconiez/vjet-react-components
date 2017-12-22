@@ -11,9 +11,11 @@ import inputStories from './content/Input';
 import dimStories from './content/Dim';
 import sidebarStories from './content/Sidebar';
 import calendarStories from './content/Calendar';
+import containerStories from './content/Container';
 
 buttonStories();
 inputStories();
 dimStories();
 sidebarStories();
 calendarStories();
+containerStories();
