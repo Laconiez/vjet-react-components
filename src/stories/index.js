@@ -12,6 +12,7 @@ import dimStories from './content/Dim';
 import sidebarStories from './content/Sidebar';
 import calendarStories from './content/Calendar';
 import containerStories from './content/Container';
+import checkboxStories from './content/Checkbox';
 
 buttonStories();
 inputStories();
@@ -19,3 +20,4 @@ dimStories();
 sidebarStories();
 calendarStories();
 containerStories();
+checkboxStories();
