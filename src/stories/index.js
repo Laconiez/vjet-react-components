@@ -13,6 +13,7 @@ import sidebarStories from './content/Sidebar';
 import calendarStories from './content/Calendar';
 import containerStories from './content/Container';
 import checkboxStories from './content/Checkbox';
+import radialProgressStories from './content/RadialProgress';
 
 buttonStories();
 inputStories();
@@ -21,3 +22,4 @@ sidebarStories();
 calendarStories();
 containerStories();
 checkboxStories();
+radialProgressStories();
