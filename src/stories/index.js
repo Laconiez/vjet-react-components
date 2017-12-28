@@ -21,5 +21,5 @@ dimStories();
 sidebarStories();
 calendarStories();
 containerStories();
-checkboxStories();
 radialProgressStories();
+checkboxStories();
