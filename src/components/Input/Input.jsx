@@ -40,12 +40,18 @@ class Input extends PureComponent {
 
   render() {
     const {
-      value, onChange, isError, disabled, errorMessage,
+      value, onChange, isError, disabled, errorMessage, placeholder,
     } = this.props;
 
     return (
       <InputWrapper>
-        <InputStyle readonly={disabled} value={value} onChange={onChange} isError={isError} />
+        <InputStyle
+          readonly={disabled}
+          value={value}
+          onChange={onChange}
+          isError={isError}
+          placeholder={placeholder}
+        />
         <ErrorMessageStyle isError={isError}>{errorMessage}</ErrorMessageStyle>
       </InputWrapper>
     );
@@ -58,12 +64,14 @@ Input.propTypes = {
   isError: pt.bool,
   errorMessage: pt.string,
   onChange: pt.func.isRequired,
+  placeholder: pt.string,
 };
 
 Input.defaultProps = {
   disabled: false,
   isError: false,
   errorMessage: '',
+  placeholder: '',
 };
 
 export default Input;
